@@ -1,0 +1,88 @@
+@startuml loja
+!define LIGHTBLUE
+!includeurl https://gist.githubusercontent.com/amgs/de57560012a8a5f0e4240f392b678a40/raw/c43f948dd1f23ed1b87c6c9fc972e71493859b16/style.puml
+
+class Loja {
+    -gestor : Gestor
+    -vendedores : list
+    -clientes : list
+    -items : item
+    obter_gestor() -> Gestor
+    obter_vendedores() -> list
+    obter_clientes() -> list
+    obter_itens() -> None
+    registar_gestor(nome : str, numero_de_funcionario : str) -> None
+    registar_vendedor(nome : str, numero_de_funcionario : str) -> None
+    registar_cliente(nome : str, numero_de_cliente : str) -> None
+    registar_item(nome : str) -> None
+    registar_fatura(numero_de_cliente : str, itens : list, numero_de_funcionario_do_vendedor : str, ano : int, mes : int, dia : int) -> None
+    obter_faturas_cliente(numero_de_cliente : str) -> None
+    obter_faturas_vendedor(numero_de_funcionario : str) -> None
+}
+
+abstract class Pessoa {
+    -nome : str
+    obter_nome() -> str
+}
+
+abstract class Funcionario {
+    -numero : str
+    obter_numero() -> str
+}
+Pessoa <|-- Funcionario
+
+class Gestor {
+}
+
+class Vendedor {
+    -faturas : list
+    obter_faturas() -> list
+    obter_faturas(inicio : Data, fim : Data) -> list
+}
+
+class Cliente {
+    -numero : str
+    -faturas : str
+    obter_numero() -> str
+    obter_faturas() -> list
+}
+
+class Item {
+    -nome : str
+    obter_nome() -> str
+}
+
+class Fatura {
+    -numero : str
+    -data : Data
+    -cliente : Cliente
+    -vendedor : Vendedor
+    -itens : list
+    obter_numero() -> str
+    obter_data() -> Data
+    obter_cliente() -> Cliente
+    obter_vendedor() -> Vendedor
+    obter_itens() -> list
+}
+
+class Data {
+    -ano : int
+    -mes : int
+    -dia : int
+    obter_ano() -> int
+    obter_mes() -> int
+    obter_dia() -> int
+}
+
+Funcionario <|-- Gestor
+Funcionario <|-- Vendedor
+Pessoa <|-- Cliente
+Loja "1"--"0..*" Vendedor
+Loja "1"--"1" Gestor
+Loja "1"--"0..*" Item
+Loja "1"--"0..*" Cliente
+Fatura "0..*"--"1..*" Item
+Fatura "0..*"--"1" Cliente
+Fatura "0..*"--"1" Vendedor
+Fatura "0..*"--"1" Data
+@enduml
