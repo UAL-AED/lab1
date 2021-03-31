@@ -36,7 +36,7 @@ class Gestor {
 
 class Vendedor {
     -faturas : list
-    obter_faturas() -> list
+    obter_todas_faturas() -> list
     obter_faturas(inicio : Data, fim : Data) -> list
 }
 
