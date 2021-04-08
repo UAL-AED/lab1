@@ -6,7 +6,7 @@ class Loja {
     -gestor : Gestor
     -vendedores : list
     -clientes : list
-    -items : item
+    -items : list
     obter_gestor() -> Gestor
     obter_vendedores() -> list
     obter_clientes() -> list
