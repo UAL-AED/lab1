@@ -6,18 +6,18 @@ class Loja {
     -gestor : Gestor
     -vendedores : list
     -clientes : list
-    -items : list
+    -itens : list
     obter_gestor() -> Gestor
     obter_vendedores() -> list
     obter_clientes() -> list
-    obter_itens() -> None
+    obter_itens() -> list
     registar_gestor(nome : str, numero_de_funcionario : str) -> None
     registar_vendedor(nome : str, numero_de_funcionario : str) -> None
     registar_cliente(nome : str, numero_de_cliente : str) -> None
     registar_item(nome : str) -> None
     registar_fatura(numero_de_cliente : str, itens : list, numero_de_funcionario_do_vendedor : str, ano : int, mes : int, dia : int) -> None
-    obter_faturas_cliente(numero_de_cliente : str) -> None
-    obter_faturas_vendedor(numero_de_funcionario : str) -> None
+    obter_faturas_cliente(numero_de_cliente : str) -> list
+    obter_faturas_vendedor(numero_de_funcionario : str) -> list
 }
 
 abstract class Pessoa {
