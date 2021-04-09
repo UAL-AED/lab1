@@ -42,7 +42,7 @@ class Vendedor {
 
 class Cliente {
     -numero : str
-    -faturas : str
+    -faturas : list
     obter_numero() -> str
     obter_faturas() -> list
 }
